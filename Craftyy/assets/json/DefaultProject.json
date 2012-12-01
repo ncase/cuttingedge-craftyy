@@ -1,0 +1,226 @@
+{
+	"scenes": ["scene.Blank"],
+
+	"assets": [
+
+
+
+		{
+			"id": "package.DefaultAssets",
+			"type": "package/json",
+			"tags": ["package","art"],
+			"data": "/Craftyy/assets/json/DefaultAssets.json"
+		},
+		{
+			"id": "package.DefaultScripts",
+			"type": "package/json",
+			"tags": ["package","script"],
+			"data": "/Craftyy/assets/json/DefaultScripts.json"
+		},
+		{
+			"id": "package.DefaultActions",
+			"type": "package/json",
+			"tags": ["package","action"],
+			"data": "/Craftyy/assets/json/DefaultActions.json"
+		},
+
+		{
+			"label": "Eval",
+			"blurb": "Run this script",
+			"icon": "stickers/custom.png",
+
+			"id": "action.action.Eval",
+			"type": "json/object",
+			"tags": ["action","behaviour"],
+			"data": {"is": "action.Eval"}
+		},
+
+
+
+		{
+			"label": "Camera",
+			"blurb": "The game's camera. [TODO: Actual description]",
+
+			"id": "actor.Camera",
+			"type": "json/object",
+
+			"tags": ["actor"],
+			"icon": "art.Camera",
+			"data": {
+				"actions": [
+					{
+						"is": "meta.ID",
+						"id": "camera"
+					},
+					{
+						"is": "art.Bitmap",
+						"image": "art.Camera"
+					},
+					{
+						"is": "scene.Camera"
+					}
+				]
+			}
+		},
+		{
+			"label": "Player",
+			"blurb": "Walks in all 4 directions with the arrow keys.",
+
+			"id": "actor.Player",
+			"type": "json/object",
+
+			"tags": ["actor"],
+			"icon": "art.GrassBlock",
+			"data": {
+				"actions": [
+					{
+						"is": "meta.ID",
+						"id": "player"
+					},
+					{
+						"is": "art.Bitmap",
+						"image": "art.GrassBlock"
+					},
+					{
+						"is": "TopDown",
+						"speed": 10,
+						"inertia": 0.6
+					}
+				]
+			}
+		},
+		{
+			"label": "Collectible",
+			"blurb": "When collected by 'player', this disappears.",
+
+			"id": "actor.Collectible",
+			"type": "json/object",
+
+			"tags": ["actor"],
+			"icon": "art.GoldBlock",
+			"data": {
+				"actions": [
+					{
+						"is": "art.Bitmap",
+						"image": "art.GoldBlock"
+					},
+					{
+						"is": "condition.Once",
+						"check": {
+							"is": "check.Proximity",
+							"target": "player",
+							"radius": 60
+						},
+						"perform": {
+							"is": "Burst"
+						}
+					}
+				]
+			}
+		},
+		{
+			"label": "Time Bomb",
+			"blurb": "Explodes after a certain duration",
+
+			"id": "actor.TimeBomb",
+			"type": "json/object",
+
+			"tags": ["actor"],
+			"icon": "art.ShockBlock",
+			"data": {
+				"actions": [
+					{
+						"is": "art.Bitmap",
+						"image": "art.ShockBlock"
+					},
+					{
+						"is": "logic.Timer",
+						"delay": 1337,
+						"perform": {
+							"is": "Burst",
+							"radius": 100
+						}
+					}
+				]
+			}
+		},
+		{
+			"label": "Wall",
+			"blurb": "A solid wall that can't be passed through.",
+
+			"id": "actor.Wall",
+			"type": "json/object",
+
+			"tags": ["actor"],
+			"icon": "art.BrickBlock",
+			"data": {
+				"actions": [
+					{
+						"is": "art.Bitmap",
+						"image": "art.BrickBlock"
+					},
+					{
+						"is": "box2d.Box",
+						"type": 0,
+						"density": 0,
+						"friction": 0,
+						"dampening": 0,
+						"restitution": 0,
+						"isSensor": false,
+						"fixedRotation": false
+					}
+				]
+			}
+		},
+
+
+
+		{
+			"label": "New Scene",
+
+			"id": "scene.Blank",
+			"type": "json/object",
+			"tags": ["scene"],
+
+
+
+
+			"data": {
+				"actions": [
+					{
+						"is": "edit.Actions",
+						"actions": [
+							{
+								"is": "scene.Layers",
+								"layers": ["background","foreground","overlay"]
+							},
+							{
+								"is": "box2d.World"
+							}
+						]
+					}
+				],
+				"actors": [
+					{
+						"actors": [],
+						"actions": []
+					},
+					{
+						"actors": [],
+						"actions": []
+					},
+					{
+						"actors": [],
+						"actions": []
+					}
+				]
+			}
+
+
+
+			
+		}
+
+		
+	]
+}

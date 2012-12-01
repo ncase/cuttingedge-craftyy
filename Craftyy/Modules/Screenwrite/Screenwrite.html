@@ -1,0 +1,70 @@
+<link rel="stylesheet" type="text/css" href="screenwrite.css">
+
+<body>
+
+	<canvas id="canvas"></canvas>
+	<div id="library">
+		<div id="tabs"></div>
+		<div id="hide_button" style="position: absolute;top: 50%;left: -20px;width:20px;height:20px;cursor:pointer;background:url(/Craftyy/assets/texture/fawn.jpg);">>></div>
+		<div id="galleries"></div>
+	</div>
+
+	<div id="actor_options">
+		<div id="actor_options_bg"></div>
+		<div id="actor_options_buttons">
+			<div class="option_button" id="option_edit"></div>
+			<div class="option_button" id="option_store"></div>
+			<div class="option_button" id="option_delete"></div>
+		</div>
+	</div>
+
+</body>
+
+
+<!-- SCRIPTS -->
+<script src="/Craftyy/js/core/Ajax.js"></script>
+<script src="/Craftyy/js/core/Class.js"></script>
+<script src="/Craftyy/js/core/Feed.js"></script>
+<script src='/Craftyy/js/core/Promise.js'></script>
+
+<script> var createjs = window; </script>
+<script src="/Craftyy/js/lib/easeljs.min.js"></script>
+<script src="/Craftyy/js/lib/tweenjs.min.js"></script>
+
+<script src="/Craftyy/js/screenplay/Act.js"></script>
+<script src="/Craftyy/js/screenplay/ActAddons.js"></script>
+<script src="/Craftyy/js/screenplay/Global.js"></script>
+<script src="/Craftyy/js/screenplay/Mouse.js"></script>
+<script src="/Craftyy/js/screenplay/Key.js"></script>
+<script src="/Craftyy/js/screenplay/Scene.js"></script>
+<script src="/Craftyy/js/screenplay/Screenplay.js"></script>
+
+<!-- EXTENSIONS: Should be dynamic? -->
+<script src="/Craftyy/js/screenplay/CoreActions.js"></script>
+<script src="/Craftyy/js/addons/screenwrite/Editables.js"></script>
+<script src="/Craftyy/js/addons/screenwrite/ScreenwriteCamera.js"></script>
+<script src="/Craftyy/js/addons/screenwrite/ArtPicker.js"></script>
+<script src="/Craftyy/js/addons/screenwrite/Transform.js"></script>
+<script src="/Craftyy/js/addons/screenwrite/Thumbnail.js"></script>
+
+<!-- REQUIREMENTS -->
+<script src='/Craftyy/js/playwright/Messenger.js'></script>
+<script src='/Craftyy/js/playwright/Module.js'></script>
+<script src='/Craftyy/js/playwright/Edit.js'></script>
+
+<script src="/Craftyy/js/playwright/Asset.js"></script>
+<script src="/Craftyy/js/addons/playwright/AssetAddons.js"></script>
+<script src="/Craftyy/js/addons/playwright/AssetHandlers.js"></script>
+<script src='/Craftyy/js/addons/playwright/MessengerAddons.js'></script>
+
+<!-- UI Components -->
+<script src='ScreenwriteLibraries.js'></script>
+
+<!-- Screenwrite -->
+<script src='Screenwrite.js'></script>
+
+<!-- Screenwrite Components -->
+<script src='ActorOptions.js'></script>
+<script src='DropAddItem.js'></script>
+
+

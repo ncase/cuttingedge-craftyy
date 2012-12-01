@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="draw.css">
+
+<div class="container" id="canvas_container">
+	<canvas id="canvas" width="300" height="300"></canvas>
+	<div id="colours" style="position: relative;
+left: -50px;">
+		
+		<div id="colour_black" style="
+    width: 50px;
+    height: 50px;
+    background: black;
+
+"></div>
+		<div id="colour_white" style="
+    width: 50px;
+    height: 50px;
+    background: white;
+
+"></div>
+	</div>
+</div>
+<div class="container">
+	<button id="reset">clear</button>
+	<button id="cancel">cancel</button>
+	<!--button id="webcam">webcam</button-->
+	<button id="add">ADD DRAWING</button>
+</div>
+
+<!-- REQUIRED JAVASCRIPTS -->
+<script src="/Craftyy/js/core/Feed.js"></script>
+<script src='/Craftyy/js/core/Promise.js'></script>
+<script src='/Craftyy/js/playwright/Messenger.js'></script>
+<script src='/Craftyy/js/playwright/Module.js'></script>
+<script src='/Craftyy/js/addons/playwright/MessengerAddons.js'></script>
+
+<script src='Draw.js'></script>

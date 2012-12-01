@@ -1,0 +1,430 @@
+{
+	"assets": [
+
+		{
+			"id": "package.MovementActions",
+			"type": "package/json",
+			"tags": ["package","action"],
+			"data": "/Craftyy/assets/json/MovementActions.json"
+		},
+
+
+		{
+			"label": "Draggable",
+			"blurb": "Be able to drag & drop this actor",
+			"icon": "stickers/behaviours/make-actor-draggable.png",
+
+			"id": "action.Draggable",
+			"type": "json/object",
+			"tags": ["action","behaviour"],
+			"data": {"is": "Draggable"}
+		},
+		{
+			"label": "Follow Actor",
+			"blurb": "Keep moving towards a specific actor",
+			"icon": "stickers/behaviours/follow-other-actor.png",
+
+			"id": "action.Follow",
+			"type": "json/object",
+			"tags": ["action","behaviour"],
+			"data": {"is": "Follow","targetID": "player"}
+		},
+		{
+			"label": "Spin Clockwise",
+			"blurb": "Spin this actor clockwise",
+			"icon": "stickers/behaviours/spin-clockwise.png",
+
+			"id": "action.Spinner.right",
+			"type": "json/object",
+			"tags": ["action","behaviour"],
+			"data": {"is": "Spinner","spin": 10}
+		},
+
+
+
+		{
+			"label": "Tag",
+
+			"id": "action.meta.ID",
+			"type": "json/object",
+			"tags": ["action","meta"],
+			"data": { "is": "meta.ID"}
+		},
+		{
+			"label": "Bitmap Art",
+
+			"id": "action.art.Bitmap",
+			"type": "json/object",
+			"tags": [ "action", "art_action" ],
+			"data": { "is": "art.Bitmap" }
+		},
+		{
+			"label": "Box2D - Set Velocity",
+			"blurb": "Give an initial speed to an actor",
+			"icon": "stickers/actions/set-velocity.png",
+
+			"id": "action.box2d.SetVelocity",
+			"type": "json/object",
+			"tags": [ "action", "behaviour", "physics" ],
+			"data": { "is": "box2d.SetVelocity" }
+		},
+		{
+			"label": "Play Sound",
+			"blurb": "Make a certain sound play",
+			"icon": "stickers/actions/sound.png",
+
+			"id": "action.sound.Play",
+			"type": "json/object",
+			"tags": ["action","perform"],
+			"data": {"is":"sound.Play","sound":"audio.Win"}
+		},
+		{
+			"label": "Shake",
+			"blurb": "Make an actor shake back and forth",
+			"icon": "stickers/behaviours/shake.png",
+
+			"id": "action.Shake",
+			"type": "json/object",
+			"tags": ["action","behaviour"],
+			"data": {"is": "Shake"}
+		},
+		{
+			"label": "Box2D - Box",
+			"blurb": "Give an actor 2D physics",
+			"icon": "stickers/behaviours/apply-physics.png",
+
+			"id": "action.box2d.Box",
+			"type": "json/object",
+			"tags": ["action","behaviour"],
+			"data": {"is": "box2d.Box"}
+		},		
+		{
+			"label": "Delay",
+			"blurb": "Wait a set time, and then perform something once",
+			"icon": "stickers/logic/timer.png",
+
+			"id": "action.logic.Timer",
+			"type": "json/object",
+			"tags": ["action","logic"],
+			"data": {
+				"is": "logic.Timer",
+				"delay": 1000,
+				"perform": {
+					"is": "Burst",
+					"radius": 100
+				}
+			}
+		},
+		{
+			"label": "Burst",
+			"blurb": "Make an actor explode",
+			"icon": "stickers/actions/burst.png",
+
+			"id": "action.Burst",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "Burst",
+				"radius": 100
+			}
+		},
+		{
+			"label": "Message Screen",
+			"blurb": "A screen appearsxcakfasfias signaling completion of the game",
+			"icon": "stickers/actions/message-text.png",
+
+			"id": "action.ShowtimeMessage",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "ShowtimeMessage"
+			}
+		},
+		{
+			"label": "Check Proximity",
+			"blurb": "Check a certain radius around the actor",
+			"icon": "stickers/conditions/check-proximity.png",
+
+			"id": "action.check.Proximity",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"check"
+			],
+			"data": {
+				"is": "check.Proximity",
+				"target": "player",
+				"radius": 100
+			}
+		},
+		{
+			"label": "Check if key is Pressed",
+			"blurb": "Check if a keyboard key is pressed",
+			"icon": "stickers/conditions/check-keyboard-input.png",
+
+			"id": "action.check.Key",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"check"
+			],
+			"data": {
+				"is": "check.Key",
+				"key": "space"
+			}
+		},
+		{
+			"label": "Check Contact",
+			"blurb": "Check if a collision is made between actors",
+			"icon": "stickers/conditions/check-for-contact.png",
+
+			"id": "action.check.Contact",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"check"
+			],
+			"data": {
+				"is": "check.Contact"
+			}
+		},
+		{
+			"label": "Set Art's Visibility",
+			"blurb": "Toggle if an actor is visible or not",
+			"icon": "stickers/actions/toggle-actor-visibility.png",
+
+			"id": "action.art.SetVisible",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "art.SetVisible"
+			}
+		},
+		{
+			"label": "Set Box2D's Enabled",
+			"blurb": "Toggle if an actor's physics are enabled or not",
+			"icon": "stickers/logic/toggle-physics.png",
+
+			"id": "action.box2d.SetActive",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "box2d.SetActive"
+			}
+		},
+		{
+			"label": "Add Game Mechanic",
+			"blurb": "Add any kind of game mechanic",
+			"icon": "stickers/custom.png",
+
+			"id": "action.perform.AddAction",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "perform.AddAction",
+				"target": "",
+				"action": {
+					"is": "Draggable"
+				}
+			}
+		},
+		{
+			"label": "Perform Action on Actor",
+			"blurb": "Make a target actor perform something",
+			"icon": "stickers/actions/target-actor-performs-action.png",
+
+			"id": "action.perform.OnActor",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "perform.OnActor",
+				"target": "",
+				"action": {
+					"is": "Burst"
+				}
+			}
+		},
+		{
+			"label": "Check Global Value",
+			"blurb": "Check for a global value",
+			"icon": "stickers/conditions/check-for-global-value.png",
+
+			"id": "action.check.Global",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"check"
+			],
+			"data": {
+				"is": "check.Global",
+				"prop": "property",
+				"value": "value"
+			}
+		},
+		{
+			"label": "Set Global Value",
+			"blurb": "Set a global value that can be checked for",
+			"icon": "stickers/actions/set-global-value.png",
+
+			"id": "action.set.Global",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "set.Global",
+				"prop": "property",
+				"value": "value"
+			}
+		},
+		{
+			"label": "Check Two Conditions",
+			"blurb": "Check for two different conditions to be met",
+			"icon": "stickers/conditions/two-conditions.png",
+
+			"id": "action.check.And",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"check"
+			],
+			"data": {
+				"is": "check.And",
+				"first": {
+					"is": "check.Key",
+					"key": "left"
+				},
+				"second": {
+					"is": "check.Key",
+					"key": "right"
+				}
+			}
+		},
+		{
+			"label": "Perform 2 Actions",
+			"blurb": "Make an actor perform two simultaneous actions",
+			"icon": "stickers/actions/perform-action-sequence.png",
+
+			"id": "action.perform.TwoActions",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "perform.TwoActions",
+				"first": {
+					"is": "Burst"
+				},
+				"second": {
+					"is": "Burst"
+				}
+			}
+		},
+		{
+			"label": "Wait Until True",
+			"blurb": "Wait until something is true, then perform an action",
+			"icon": "stickers/logic/wait-until-true-then-perform-action.png",
+
+			"id": "action.condition.Once",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"logic"
+			],
+			"data": {
+				"is": "condition.Once",
+				"check": {
+					"is": "check.Proximity",
+					"target": "player",
+					"radius": 60
+				},
+				"perform": {
+					"is": "Burst",
+					"radius": 42
+				}
+			}
+		},
+		{
+			"label": "When Value Switches",
+			"blurb": "When a value switches, make the actor perform something",
+			"icon": "stickers/actions/switch-value.png",
+
+			"id": "action.condition.ChangeToValue",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"logic"
+			],
+			"data": {
+				"is": "condition.ChangeToValue",
+				"value": true,
+				"check": {
+					"is": "check.Proximity",
+					"target": "player",
+					"radius": 60
+				},
+				"perform": {
+					"is": "Burst",
+					"radius": 42
+				}
+			}
+		},
+		{
+			"label": "Spawn Actor",
+			"blurb": "Spawn an actor",
+			"icon": "stickers/actions/spawn-actor.png",
+
+			"id": "action.actor.AddActor",
+			"type": "json/object",
+			
+			"tags": [
+				"action",
+				"perform"
+			],
+			"data": {
+				"is": "actor.AddActor",
+				"asset": "actor.Wall",
+				"target": ""
+			}
+		}
+
+
+
+
+	]
+}

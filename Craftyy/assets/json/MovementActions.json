@@ -1,0 +1,16 @@
+{
+	"assets": [
+
+		{
+			"label": "Move To Point",
+			"blurb": "Move",
+			"icon": "stickers/behaviours/spin-clockwise.png",
+
+			"id": "action.move.ToPoint",
+			"type": "json/object",
+			"tags": ["action","perform"],
+			"data": {"is":"move.ToPoint"}
+		}
+
+	]
+}

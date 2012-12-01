@@ -1,0 +1,47 @@
+<link rel="stylesheet" type="text/css" href="publish.css">
+
+<div id="bg"></div>
+<div id="cont">
+	<div id="cont-2">
+
+		<div id="info">
+			<img id="thumbnail"/>
+			TITLE: <input id="title" value="Something"/><br/>
+			BLURB: <br><input id="blurb" placeholder="what changes you made"/><br/>
+		</div>
+
+		<div id="response" style="display:none">
+			link will appear below when your game is saved!
+			<div id="response_link" style="border:2px dotted #666">...saving...</div>
+			<button onclick="window.top.location.href='/';">Back to Garden</button>
+		</div>
+
+		<div id="response2" style="display:none">
+			<textarea id="response_export" style="width: 310px;height: 150px;"></textarea>
+			<button id="back_from_export">Back to Publish</button>
+		</div>
+
+		<div style="position:relative">
+			<button id="cancel">cancel</button>
+			<button id="export">export</button>
+			<button id="submit">PUBLISH GAME</button>
+		</div>
+		
+	</div>
+</div>
+
+<!-- REQUIREMENTS -->
+<script src="/Craftyy/js/core/Ajax.js"></script>
+<script src="/Craftyy/js/core/Feed.js"></script>
+<script src='/Craftyy/js/core/Promise.js'></script>
+<script src='/Craftyy/js/playwright/Edit.js'></script>
+
+<script src="/Craftyy/js/playwright/Asset.js"></script>
+<script src="/Craftyy/js/addons/playwright/AssetAddons.js"></script>
+
+<script src='/Craftyy/js/playwright/Messenger.js'></script>
+<script src='/Craftyy/js/playwright/Module.js'></script>
+<script src='/Craftyy/js/addons/playwright/MessengerAddons.js'></script>
+
+<!-- PUBLISH -->
+<script src='Publish.js'></script>

@@ -1,0 +1,60 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="actor.css">
+</head>
+
+<body>
+
+	<div id="main_container">
+
+		<!-- HEADER -->
+		<div id="header">
+			<div id="header_info">
+				<div id="actor_name">ACTOR</div>
+			</div>
+		</div>
+
+		<!-- ACTIONS -->
+		<div id="action_list"></div>
+
+		<!-- FOOTER -->
+		<div id="footer">
+			<div id="instructions">Drag & Drop <i>Behaviours</i> or <i>Logic</i> from the sidebar to the space above!</div>
+			<div id="submit">Done</div>
+		</div>
+
+	</div>
+
+</body>
+
+
+<!-- REQUIREMENTS -->
+<script src="/Craftyy/js/core/Class.js"></script>
+<script src="/Craftyy/js/core/Feed.js"></script>
+<script src='/Craftyy/js/core/Promise.js'></script>
+<script src='/Craftyy/js/playwright/Messenger.js'></script>
+<script src='/Craftyy/js/playwright/Module.js'></script>
+<script src='/Craftyy/js/playwright/Edit.js'></script>
+
+<script src="/Craftyy/js/playwright/Asset.js"></script>
+<script src="/Craftyy/js/addons/playwright/AssetAddons.js"></script>
+<script src="/Craftyy/js/addons/playwright/AssetHandlers.js"></script>
+<script src='/Craftyy/js/addons/playwright/MessengerAddons.js'></script>
+
+<!-- ACTION EXTENSIONS -->
+<script src='PropertyEditor.js'></script>
+<script src='PropertyEditorAddons.js'></script>
+
+<!-- Components -->
+<script src='/Craftyy/js/ui/Library.js'></script>
+
+<!-- Polyfill for FIREFOX -->
+<script type="text/javascript">
+var range = document.createElement("input");
+range.setAttribute('type','range');
+if(range.type!=='range'){
+    document.write(unescape("%3Cscript src='/Craftyy/js/lib/html5slider.min.js'%3E%3C/script%3E"));
+}
+</script>
+
+<!-- ACTIONS -->
+<script src='Actor.js'></script>

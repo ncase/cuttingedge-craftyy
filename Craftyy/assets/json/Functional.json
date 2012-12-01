@@ -1,0 +1,114 @@
+{
+	"scenes": ["scene.Blank"],
+
+	"assets": [
+
+
+
+		{
+			"id": "package.DefaultAssets",
+			"type": "package/json",
+			"tags": ["package","art"],
+			"data": "/Craftyy/assets/json/DefaultAssets.json"
+		},
+		{
+			"id": "package.DefaultScripts",
+			"type": "package/json",
+			"tags": ["package","script"],
+			"data": "/Craftyy/assets/json/DefaultScripts.json"
+		},
+		{
+			"id": "package.DefaultActions",
+			"type": "package/json",
+			"tags": ["package","action"],
+			"data": "/Craftyy/assets/json/DefaultActions.json"
+		},
+
+		{
+			"label": "Eval",
+			"blurb": "Run this script",
+			"icon": "stickers/custom.png",
+
+			"id": "action.action.Eval",
+			"type": "json/object",
+			"tags": ["action","behaviour"],
+			"data": {"is": "action.Eval"}
+		},
+
+		{
+			"label": "Time Bomb",
+			"blurb": "Explodes after a certain duration",
+
+			"id": "actor.TimeBomb",
+			"type": "json/object",
+
+			"tags": ["actor"],
+			"icon": "art.ShockBlock",
+			"data": {
+				"actions": [
+					{
+						"is": "art.Bitmap",
+						"image": "art.ShockBlock"
+					},
+					{
+						"is": "logic.Timer",
+						"delay": 1337,
+						"perform": {
+							"is": "Burst",
+							"radius": 100
+						}
+					}
+				]
+			}
+		},
+
+
+		{
+			"label": "New Scene",
+
+			"id": "scene.Blank",
+			"type": "json/object",
+			"tags": ["scene"],
+
+
+
+
+			"data": {
+				"actions": [
+					{
+						"is": "edit.Actions",
+						"actions": [
+							{
+								"is": "scene.Layers",
+								"layers": ["background","foreground","overlay"]
+							},
+							{
+								"is": "box2d.World"
+							}
+						]
+					}
+				],
+				"actors": [
+					{
+						"actors": [],
+						"actions": []
+					},
+					{
+						"actors": [],
+						"actions": []
+					},
+					{
+						"actors": [],
+						"actions": []
+					}
+				]
+			}
+
+
+
+			
+		}
+
+		
+	]
+}

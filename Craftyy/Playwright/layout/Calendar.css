@@ -1,0 +1,136 @@
+/**********************/
+/* CALENDAR */
+/**********************/
+#calendar_container {
+	width:100%;height:100%;
+	position:absolute;
+	top:0;
+}
+#footer {
+	width:100%;height:0px;
+	position:absolute;
+	bottom:0;
+	background:#555;
+}
+#nav_container {
+	width:0px;height:0px;
+	margin:0 auto;
+	position: relative;
+}
+.navtab {
+	position: absolute; bottom:-5px;
+	cursor: pointer;
+	background: url(/Craftyy/Playwright/assets/final-footer-buttons.png);
+	
+	-webkit-transition: 0.2s height ease-in-out;
+	-moz-transition: 0.2s height ease-in-out;
+
+}
+
+/**********************/
+/* SPECIFIC TABS */
+/**********************/
+#nav_preview.navtab {
+	background: url(/Craftyy/Playwright/assets/playstop.png);
+	left:-50px; bottom:0;
+	width:110px; height:80px;
+	background-position: -30px -20px;
+}
+#nav_preview.navtab:hover {
+	height:100px;
+}
+
+#nav_home.navtab {
+	left:-225px;
+	width:85px; height:65px;
+	background-position: 0 0;
+}
+#nav_home.navtab:hover {
+	height:80px;
+}
+
+#nav_publish.navtab {
+	left:-140px;
+	width:85px; height:65px;
+	background-position: -90px 0;
+}
+#nav_publish.navtab:hover {
+	height:80px;
+}
+
+#nav_draw.navtab {
+	left:55px;
+	width:85px; height:65px;
+	background-position: -273px 0;
+}
+#nav_draw.navtab:hover {
+	height:80px;
+}
+
+#nav_actionmaker.navtab {
+	left:145px;
+	width:85px; height:65px;
+	background-position: -185px 0;
+}
+#nav_actionmaker.navtab:hover {
+	height:80px;
+}
+
+
+
+/**********************/
+/* MODULES */
+/**********************/
+#module, iframe {
+	width:100%;
+	height:100%;
+	position:absolute;
+	border:0;
+}
+#module > iframe {
+
+	-webkit-transform-origin: 0 0;
+	-webkit-transition: 0.5s -webkit-transform ease-in-out;
+	-webkit-transform: rotate3d(1,0,0,90deg);
+
+	-moz-transform-origin: 0 0;
+	-moz-transition: 0.5s -moz-transform ease-in-out;
+	-moz-transform: rotate3d(1,0,0,90deg);
+
+}
+#module > iframe.shown {
+
+	-webkit-transform: rotate3d(1,0,0,0deg);
+	-moz-transform: rotate3d(1,0,0,0deg);
+
+}
+#module_dropzone {
+	position:absolute;
+	width:100%;
+	height:100%;
+	display: none;
+}
+
+/**********************/
+/* 3D FOLDING */
+/**********************/
+
+#fold_container2 {
+	
+	-webkit-perspective: 1337px;
+	-moz-perspective: 1337px;
+
+	-webkit-perspectivee-origin: 50% 50%;
+	-moz-perspective-origin: 50% 50%;
+
+
+	width:100%; height:100%;
+}
+#fold_container, #module {
+	
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+
+	width:100%; height:100%;
+	
+}

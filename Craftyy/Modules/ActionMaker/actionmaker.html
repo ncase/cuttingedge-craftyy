@@ -1,0 +1,100 @@
+
+<!-- GODDAMN CSS & HTML -->
+<link rel="stylesheet" type="text/css" href="actionmaker.css">
+
+<link rel="stylesheet" href="codemirror/codemirror.css">
+<link rel="stylesheet" href="codemirror/ambiance.css">
+
+<!--div class="container" style="width:1110px;z-index:10">
+  <div class="section">
+    <div id="label">ACTION CODE</div>
+
+<textarea id="code_action">
+Class.create("Blink",{
+  is:"Action",
+  interval:10,
+  init:function(){
+    this._time = 0;
+  },
+  update:function(){
+    this._time++;
+    if(this._time>this.interval){
+      this.actor.art.visible = !this.actor.art.visible;
+      this._time = 0;
+    }
+  }
+});
+</textarea>
+
+  </div>
+  <div class="section">
+    <div id="label">INSPECTOR</div>
+
+<textarea id="code_inspector">
+Class.create( "edit.Blink", {
+  
+  is: "edit.Properties",
+  
+  properties: [{
+    is:"prop.Range",
+    prop:"interval",
+    min:1, max:50, step:1,
+    getInfo: function(value){
+      return "Interval: "+value+" frames";
+    }
+  }]
+
+});
+</textarea>
+
+  </div>
+  <div class="section">
+    <div id="label">ASSET METADATA</div>
+
+<textarea id="code_asset"></textarea>
+
+  </div>
+</div-->
+
+<div style="width:30%;height:100%;float:left;font-size:15px">
+  <button id="cancel">cancel</button>
+  <button id="add">ADD ACTION</button>
+</div>
+
+
+<div style="width:70%;height:100%;float:right;font-size:15px">
+    <textarea id="code" name="code">
+function findSequence(goal) {
+  function find(start, history) {
+    if (start == goal)
+      return history;
+    else if (start > goal)
+      return null;
+    else
+      return find(start + 5, "(" + history + " + 5)") ||
+             find(start * 3, "(" + history + " * 3)");
+  }
+  return find(1, "1");
+}</textarea>
+</div>
+
+<script src="codemirror/codemirror.js"></script>
+<script src="codemirror/javascript.js"></script>
+<script>
+  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    lineNumbers: true,
+    theme: "ambiance",
+    tabSize: 4,
+    indentWithTabs: true,
+    indentUnit: 4
+  });
+</script>
+
+<!-- REQUIRED JAVASCRIPTS -->
+<script src="/Craftyy/js/core/Feed.js"></script>
+<script src='/Craftyy/js/core/Promise.js'></script>
+<script src='/Craftyy/js/playwright/Messenger.js'></script>
+<script src='/Craftyy/js/playwright/Module.js'></script>
+<script src='/Craftyy/js/addons/playwright/MessengerAddons.js'></script>
+
+<script src='ActionMaker.js'></script>

@@ -1,0 +1,151 @@
+<style>
+body {
+	margin: 0;
+}
+
+.container {
+	margin:0 auto;
+	position: relative;
+	top:30px;
+}
+
+#bg {
+	width:100%;
+	height:100%;
+	background: url(/Craftyy/assets/texture/bark.jpg);
+	position: absolute;
+}
+#canvas {
+	width:100%;
+	height:100%;
+	position: absolute;
+}
+
+</style>
+
+<body>
+
+	<div id="bg"></div>
+
+	<div class="container" style="width:810px;height:480px;">
+		<canvas id="cam" width="640" height="480"></canvas>
+	</div>
+	
+	<!--button id="mask_face">Face</button>
+	<button id="mask_square">Square</button-->
+	
+	<button id="capture" style="position: absolute;">CAPTURE!</button>
+
+</body>
+
+<!-- REQUIRED JAVASCRIPTS -->
+<script src="/Craftyy/js/core/Feed.js"></script>
+<script src='/Craftyy/js/core/Promise.js'></script>
+<script src='/Craftyy/js/playwright/Messenger.js'></script>
+<script src='/Craftyy/js/playwright/Module.js'></script>
+<script src='/Craftyy/js/addons/playwright/MessengerAddons.js'></script>
+
+<script>
+
+
+// MODULE must be initialized.
+Module.initialize();
+
+// INPUT - what to do when someone asks for input from this Module.
+Module.input(function(){
+	//Draw.clearCanvas();
+});
+
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+window.URL = window.URL || window.webkitURL;
+
+window.video;
+navigator.getUserMedia({video: true}, function(localMediaStream) { 
+	video = document.createElement("video");
+	video.autoplay = true;
+	video.src = window.URL.createObjectURL(localMediaStream);
+});
+
+// RAF
+(function(){
+
+	var canvas = document.getElementById("cam");
+	var ctx = canvas.getContext('2d');
+	ctx.scale(-1,1);
+	ctx.translate(-640,0);
+	var render = function(){
+		if(!window.video) return;
+		ctx.drawImage(window.video,0,0);
+		if(window.outline) ctx.drawImage(window.outline,0,0);
+	};
+	(function animloop(){
+		window.webkitRequestAnimationFrame(animloop);
+		render();
+	})();
+
+})();
+
+// Cutout Outline
+window.outline;
+window.fill;
+(function(){
+
+	var canvas = document.createElement("canvas");
+	canvas.width = 640; canvas.height = 480;
+	var ctx = canvas.getContext('2d');
+	ctx.strokeStyle = "#FFF";
+	ctx.lineWidth = 5;
+	ctx.translate(320,240);
+	ctx.scale(1,1.3);
+	ctx.beginPath();
+	ctx.arc(0,0, 100, 0 , 2 * Math.PI, false);
+	ctx.stroke();
+	window.outline = canvas;
+
+	var canvas = document.createElement("canvas");
+	canvas.width = 640; canvas.height = 480;
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = "#FFF";
+	ctx.lineWidth = 5;
+	ctx.translate(320,240);
+	ctx.scale(1,1.3);
+	ctx.beginPath();
+	ctx.arc(0,0, 100, 0 , 2 * Math.PI, false);
+	ctx.fill();
+	window.fill = canvas;
+
+})();
+
+// CAPTURE
+document.getElementById("capture").addEventListener("click",function(){
+
+	//document.getElementById("cam").style.display = 'none';
+	//document.getElementById("output").style.display = 'block';
+
+	var canvas = document.createElement("canvas");
+	canvas.width = 210;
+	canvas.height = 270;
+
+	// Offest: 220 x 100
+	// Dim: 210 x 270
+
+	var ctx = canvas.getContext('2d');
+
+	ctx.scale(-1,1);
+	ctx.translate(-640,0);
+	ctx.translate(220,-100);
+	ctx.drawImage(window.video,0,0);
+	ctx.globalCompositeOperation = "destination-in";
+	ctx.drawImage(window.fill,0,0);
+
+	//document.body.appendChild(canvas);
+
+	video.pause();
+
+	var src = canvas.toDataURL();
+	Module.output(src);
+
+});
+
+
+</script>

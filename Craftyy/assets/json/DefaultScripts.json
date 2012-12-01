@@ -1,0 +1,74 @@
+{
+	"assets": [
+
+		{
+			"id": "script.Box2dWeb",
+			"type": "javascript/uri",
+			"tags": ["script","preview"],
+			"data": "/Craftyy/js/lib/Box2dWeb.min.js"
+		},
+		{
+			"id": "script.CoreActions",
+			"type": "javascript/uri",
+			"tags": ["script","preview"],
+			"data": "/Craftyy/js/screenplay/CoreActions.js"
+		},
+		{
+			"id": "script.ActionAddons",
+			"type": "javascript/uri",
+			"tags": ["script","preview"],
+			"data": "/Craftyy/js/addons/screenplay/ActionAddons.js"
+		},
+		{
+			"id": "script.ActionBox2D",
+			"type": "javascript/uri",
+			"tags": ["script","preview"],
+			"data": "/Craftyy/js/addons/screenplay/ActionBox2D.js"
+		},
+
+
+		{
+			"id": "script.ActionEditorAddons",
+			"type": "javascript/uri",
+			"tags": ["script","inspector"],
+			"data": "/Craftyy/js/addons/inspector/ActionEditorAddons.js"
+		},
+
+
+		{
+			"id": "script.Movement",
+			"type": "javascript/uri",
+			"tags": ["script","preview"],
+			"data": "/Craftyy/js/addons/screenplay/Movement.js"
+		},
+		{
+			"id": "script.MovementInspector",
+			"type": "javascript/uri",
+			"tags": ["script","inspector"],
+			"data": "/Craftyy/js/addons/inspector/MovementInspector.js"
+		},
+
+
+		{
+			"id": "script.Camera",
+			"type": "javascript/uri",
+			"tags": ["script","preview"],
+			"data": "/Craftyy/js/addons/screenplay/Camera.js"
+		},
+		{
+			"id": "script.CameraInspector",
+			"type": "javascript/uri",
+			"tags": ["script","inspector"],
+			"data": "/Craftyy/js/addons/inspector/CameraInspector.js"
+		},
+
+
+		{
+			"id": "script.SceneTransition",
+			"type": "javascript/uri",
+			"tags": ["script","preview"],
+			"data": "/Craftyy/js/addons/screenplay/SceneTransition.js"
+		}
+
+	]
+}

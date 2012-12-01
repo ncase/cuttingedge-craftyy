@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="playtime.css">
+
+<body>
+	<div id="game_area">
+		<canvas id="canvas"></canvas>
+		<div id="components"></div>
+		<div id="textio">
+			<span id="textio_label">WHAT'S YOUR NAME</span>
+			<input id="textio_text" type="text"/>
+			<button id="textio_submit">Submit</button>
+		</div>
+		<div id="message">
+			<div id="message_label" style="margin-top: 5px;text-align: center;font-size: 40px;"></div>
+			<div style="text-align: center; font-size: 14px;">press enter to continue</div>
+		</div>
+	</div>
+</body>
+
+
+<!-- SCRIPTS -->
+<script src="/Craftyy/js/core/Ajax.js"></script>
+<script src="/Craftyy/js/core/Class.js"></script>
+<script src="/Craftyy/js/core/Feed.js"></script>
+<script src='/Craftyy/js/core/Promise.js'></script>
+
+<script> var createjs = window; </script>
+<script src="/Craftyy/js/lib/easeljs.min.js"></script>
+<script src="/Craftyy/js/lib/tweenjs.min.js"></script>
+
+<script src="/Craftyy/js/screenplay/Act.js"></script>
+<script src="/Craftyy/js/screenplay/ActAddons.js"></script>
+<script src="/Craftyy/js/screenplay/Global.js"></script>
+<script src="/Craftyy/js/screenplay/Mouse.js"></script>
+<script src="/Craftyy/js/screenplay/Key.js"></script>
+<script src="/Craftyy/js/screenplay/Scene.js"></script>
+<script src="/Craftyy/js/screenplay/Screenplay.js"></script>
+
+<!-- REQUIREMENTS -->
+<script src='/Craftyy/js/playwright/Messenger.js'></script>
+<script src='/Craftyy/js/playwright/Module.js'></script>
+
+<script src="/Craftyy/js/playwright/Asset.js"></script>
+<script src="/Craftyy/js/addons/playwright/AssetAddons.js"></script>
+<script src="/Craftyy/js/addons/playwright/AssetHandlers.js"></script>
+<script src='/Craftyy/js/addons/playwright/MessengerAddons.js'></script>
+
+
+<!-- SHOWTIME -->
+<script src='Playtime.js'></script>

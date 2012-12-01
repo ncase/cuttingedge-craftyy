@@ -1,0 +1,186 @@
+body {
+	margin:0;
+	font-family:Gill Sans;
+	overflow: hidden;
+	font-size:17px;
+	color:#FFF;
+	background:url(/Craftyy/assets/texture/stormy.jpg);
+}
+h2 {
+	font-size:20px;
+}
+#nav_list {
+	overflow:hidden;
+}
+#nav_list > div {
+	width:100px;
+	height:50px;
+	background:#F55;
+	color:white;
+	float:left;
+	margin-right:20px;
+	cursor: pointer;
+
+	border-radius: 50px 50px 0 0;
+}
+#nav_list > div.shown {
+	background:#FAA;
+}
+#nav_list > div > div {
+	width: 100%;
+	text-align: center;
+	position: relative;
+	top: 20px;
+}
+#action_list {
+	padding-bottom: 20px;
+}
+#action_list > div {
+	margin-top:20px;
+}
+
+/** PROPERTY EDITOR **/
+.prop_editor {
+	font-size: 15px;
+}
+.prop_editor #info { height:40px; background:rgba(200,200,200,0.2) }
+.prop_editor #info img { float:left; }
+.prop_editor #info #title { margin-left: 5px; font-size: 30px; float: left; }
+.prop_editor #properties { margin-left: 50px; }
+.prop_editor #delete_button {
+	position: relative;
+	top: -7px;
+	width: 30px;
+	float: right;
+	font-size: 40px;
+	color: #333;
+	cursor: pointer;
+}
+
+#main_container {
+	width:740px;
+	height:100%;
+	padding:30px;
+}
+
+/** HEADER **/
+#header {
+	height: 100px;
+	z-index: 10;
+	position: relative;
+	border-bottom: 2px solid #444;
+}
+#header_info {
+	overflow: hidden;
+	height:50px;
+}
+#header_info > #actor_name {
+	font-size:42px;
+	height:50px;
+	float:left;
+}
+
+/** FOOTER **/
+#footer {
+	overflow: hidden;
+	border-top: 2px solid #444;
+}
+#footer > #submit {
+	float:right;
+	font-size:50px;
+	text-align:right;
+	padding:10px;
+	color:white;
+	background:#000;
+	cursor: pointer;
+}
+#footer > #submit:hover {
+	background:#333;
+}
+#footer > #instructions{
+	font-size: 20px;
+	float: left;
+	height: 30px;
+	padding: 20px;
+}
+
+/** ACTION LIST **/
+#action_list {
+	height: 200px;
+	overflow-y: auto;
+}
+
+
+/** LIBRARY **/
+#library {
+	position:absolute;
+	top:0; right:0;
+	width:420px; height:100%;
+	background:rgba(200,200,200,1);
+}
+#library > #tabs {
+	width:100%;
+	height:100px;
+	overflow: hidden;
+}
+#library > #contents {
+	width:100%;
+	height:500px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+.tab_button {
+	
+	background: url(actor-library-icons.png);
+	
+	width: 90px;
+	height: 85px;
+	float: left;
+
+	position:relative; top:5px;
+	cursor: pointer;
+
+	-webkit-transition: 0.2s top ease-in-out;
+	-moz-transition: 0.2s top ease-in-out;
+
+}
+.tab_button:hover {
+	top:0px;
+}
+.tab_button#tab_behaviour { background-position: -90px 0 }
+.tab_button#tab_logic { background-position: -195px 0 }
+.tab_button#tab_check { background-position: -295px 0 }
+.tab_button#tab_perform { background-position: 0 0 }
+
+
+
+/** LIBRARY ACTION **/
+#contents .lib_action:nth-child(2n) {
+	background: rgba(0, 0, 0, 0.2);
+}
+.lib_action {
+	padding:20px;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.1);
+}
+.lib_action > #icon {
+	width:70px; height:70px;
+	float:left;
+}
+.lib_action > #info {
+	float:left;
+	margin-left:10px;
+	width:250px;
+	color:black;
+}
+.lib_action > #info > #label {
+	font-size:25px;
+}
+.lib_action > #info > #description {
+	font-size:15px;
+}
+
+
+
+
+

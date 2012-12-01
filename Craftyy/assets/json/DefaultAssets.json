@@ -1,0 +1,66 @@
+{
+	"assets": [
+
+
+
+
+		{
+			"id": "art.BrickBlock",
+			"type": "image/uri",
+			"tags": ["art","image"],
+			"data": "/Craftyy/assets/img/block0.png"
+		},
+		{
+			"id": "art.ShockBlock",
+			"type": "image/uri",
+			"tags": ["art","image"],
+			"data": "/Craftyy/assets/img/block1.png"
+		},
+		{
+			"id": "art.GoldBlock",
+			"type": "image/uri",
+			"tags": ["art","image"],
+			"data": "/Craftyy/assets/img/block2.png"
+		},
+		{
+			"id": "art.GrassBlock",
+			"type": "image/uri",
+			"tags": ["art","image"],
+			"data": "/Craftyy/assets/img/block3.png"
+		},
+		{
+			"id": "art.Grass",
+			"type": "image/uri",
+			"tags": ["art","image"],
+			"data": "/Craftyy/assets/texture/olive.jpg"
+		},
+		{
+			"id": "art.Camera",
+			"type": "image/uri",
+			"tags": ["art","image"],
+			"data": "/Craftyy/assets/img/camera.png"
+		},
+		
+		{
+			"id": "art.RedGhost",
+			"type": "image/uri",
+			"tags": ["art","image"],
+			"data": "/Craftyy/assets/img/red-ghost.png"
+		},
+
+
+
+
+		{
+			"id": "audio.Win",
+			"type": "audio/uri",
+			"tags": ["audio"],
+			"data": "/Craftyy/assets/sounds/Win.ogg"
+		}
+
+
+
+
+
+	]
+}

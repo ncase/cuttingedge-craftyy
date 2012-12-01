@@ -1,0 +1,1718 @@
+{
+  "scenes": [
+    "scene.Pony"
+  ],
+  "assets": [
+    {
+      "id": "package.DefaultAssets",
+      "type": "package/json",
+      "tags": [
+        "package",
+        "art"
+      ],
+      "data": "/Craftyy/assets/json/DefaultAssets.json"
+    },
+    {
+      "id": "package.DefaultScripts",
+      "type": "package/json",
+      "tags": [
+        "package",
+        "script"
+      ],
+      "data": "/Craftyy/assets/json/DefaultScripts.json"
+    },
+    {
+      "id": "package.DefaultActions",
+      "type": "package/json",
+      "tags": [
+        "package",
+        "action"
+      ],
+      "data": "/Craftyy/assets/json/DefaultActions.json"
+    },
+    {
+      "label": "Eval",
+      "blurb": "Run this script",
+      "icon": "stickers/custom.png",
+      "id": "action.action.Eval",
+      "type": "json/object",
+      "tags": [
+        "action",
+        "behaviour"
+      ],
+      "data": {
+        "is": "action.Eval"
+      }
+    },
+    {
+      "id": "sprite.Fluttershy",
+      "type": "easel/spritesheet",
+      "tags": [
+        "sprite"
+      ],
+      "data": {
+        "images": [
+          "/Craftyy/assets/sprite/PonyJoust.png"
+        ],
+        "frames": [
+          [
+            0,
+            115,
+            84,
+            115,
+            0,
+            38.95,
+            68.85
+          ],
+          [
+            0,
+            115,
+            84,
+            115,
+            0,
+            38.95,
+            68.85
+          ],
+          [
+            84,
+            115,
+            104,
+            79,
+            0,
+            54.95,
+            40.849999999999994
+          ],
+          [
+            84,
+            115,
+            104,
+            79,
+            0,
+            54.95,
+            40.849999999999994
+          ]
+        ]
+      }
+    },
+    {
+      "id": "sprite.Dashy",
+      "type": "easel/spritesheet",
+      "tags": [
+        "sprite"
+      ],
+      "data": {
+        "images": [
+          "/Craftyy/assets/sprite/PonyJoust.png"
+        ],
+        "frames": [
+          [
+            0,
+            0,
+            84,
+            115,
+            0,
+            38.95,
+            68.85
+          ],
+          [
+            0,
+            0,
+            84,
+            115,
+            0,
+            38.95,
+            68.85
+          ],
+          [
+            84,
+            0,
+            104,
+            79,
+            0,
+            54.95,
+            40.849999999999994
+          ],
+          [
+            84,
+            0,
+            104,
+            79,
+            0,
+            54.95,
+            40.849999999999994
+          ]
+        ]
+      }
+    },
+    {
+      "label": "Camera",
+      "blurb": "The game's camera. [TODO: Actual description]",
+      "id": "actor.Camera",
+      "type": "json/object",
+      "tags": [
+        "actor",
+        "overlay"
+      ],
+      "icon": "art.Camera",
+      "data": {
+        "actions": [
+          {
+            "is": "meta.ID",
+            "id": "camera"
+          },
+          {
+            "is": "art.Bitmap",
+            "image": "art.Camera"
+          },
+          {
+            "is": "scene.Camera"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Player",
+      "blurb": "Walks in all 4 directions with the arrow keys.",
+      "id": "actor.Player",
+      "type": "json/object",
+      "tags": [
+        "actor",
+        "foreground"
+      ],
+      "icon": "art.GrassBlock",
+      "data": {
+        "actions": [
+          {
+            "is": "meta.ID",
+            "id": "player"
+          },
+          {
+            "is": "art.Bitmap",
+            "image": "art.GrassBlock"
+          },
+          {
+            "is": "TopDown",
+            "speed": 10,
+            "inertia": 0.6
+          }
+        ]
+      }
+    },
+    {
+      "label": "Collectible",
+      "blurb": "When collected by 'player', this disappears.",
+      "id": "actor.Collectible",
+      "type": "json/object",
+      "tags": [
+        "actor",
+        "foreground"
+      ],
+      "icon": "art.GoldBlock",
+      "data": {
+        "actions": [
+          {
+            "is": "art.Bitmap",
+            "image": "art.GoldBlock"
+          },
+          {
+            "is": "condition.Once",
+            "check": {
+              "is": "check.Proximity",
+              "target": "player",
+              "radius": 60
+            },
+            "perform": {
+              "is": "Burst"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Time Bomb",
+      "blurb": "Explodes after a certain duration",
+      "id": "actor.TimeBomb",
+      "type": "json/object",
+      "tags": [
+        "actor",
+        "foreground"
+      ],
+      "icon": "art.ShockBlock",
+      "data": {
+        "actions": [
+          {
+            "is": "art.Bitmap",
+            "image": "art.ShockBlock"
+          },
+          {
+            "is": "logic.Timer",
+            "delay": 1337,
+            "perform": {
+              "is": "Burst",
+              "radius": 100
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Wall",
+      "blurb": "A solid wall that can't be passed through.",
+      "id": "actor.Wall",
+      "type": "json/object",
+      "tags": [
+        "actor",
+        "foreground"
+      ],
+      "icon": "art.BrickBlock",
+      "data": {
+        "actions": [
+          {
+            "is": "art.Bitmap",
+            "image": "art.BrickBlock"
+          },
+          {
+            "is": "box2d.Box",
+            "type": 0,
+            "density": 0,
+            "friction": 0,
+            "dampening": 0,
+            "restitution": 0,
+            "isSensor": false,
+            "fixedRotation": false
+          }
+        ]
+      }
+    },
+    {
+      "label": "Grass",
+      "blurb": "Grass background",
+      "id": "actor.art.Grass",
+      "type": "json/object",
+      "tags": [
+        "background"
+      ],
+      "icon": "art.Grass",
+      "data": {
+        "actions": [
+          {
+            "is": "art.Bitmap",
+            "image": "art.Grass"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Pony Joust",
+      "id": "scene.Pony",
+      "type": "json/object",
+      "tags": [
+        "scene"
+      ],
+      "data": {
+        "actors": [
+          {
+            "actors": [],
+            "actions": []
+          },
+          {
+            "actors": [
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.SetTransform",
+                        "x": 521.9997348127865,
+                        "y": 485.9999948354872
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "meta.ID",
+                        "id": "player"
+                      },
+                      {
+                        "is": "art.SetTransform",
+                        "x": 56.93370318791126,
+                        "y": 332.0000014085035
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.GoldBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "2",
+                        "density": 2.5,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": true,
+                        "groupIndex": 0,
+                        "shape": "circle"
+                      },
+                      {
+                        "is": "action.Eval",
+                        "script": "var b2Vec2 = Box2D.Common.Math.b2Vec2;\nvar jumped = false;\n\n\n// REPLACE ART\nvar AnimClass = Asset.resources[\"sprite.Fluttershy\"];\nvar fluttershy = new AnimClass();\nthis.actor.art.removeChild(this.actor.art.children[0]);\nthis.actor.art.addChild(fluttershy);\nvar artPiece = this.actor.art.children[0];\n\n\n\nthis.update = function(){\n\n\nvar vel = this.actor.body.GetLinearVelocity();\nvar vx=vel.x, vy=vel.y;\n\n\nartPiece.rotation = (artPiece.rotation+vy*5)/2;\n\n\nif(vx>5) vx=5;\nif(vx<-5) vx=-5;\n\nif(Key.left){\n\t\tvx -= 1;\n}\n\nif(Key.right){\n\t\tvx += 1;\n}\n\nthis.actor.body.SetLinearVelocity( new b2Vec2(vx,vy) );\n\n\nvar pos = this.actor.body.GetPosition();\nvar x = pos.x; var y = pos.y;\nif(x<0){\nx=8;\nthis.actor.body.SetPosition( new b2Vec2(x,y) );\n}\nif(x>8){\nx=0;\nthis.actor.body.SetPosition( new b2Vec2(x,y) );\n}\n\n\nif(!jumped && Key.up){\njumped = true;\nvy -= 5;\nthis.actor.body.SetLinearVelocity( new b2Vec2(vx,vy) );\n}\nif(jumped && !Key.up){\njumped= false;\n}\n\nvar vel = this.actor.body.GetLinearVelocity();\nvar vx=vel.x, vy=vel.y;\nif(vx<-0.1){\nthis.actor.art.scaleX = -1;\n}\nif(vx>0.1){\nthis.actor.art.scaleX = 1;\n}\n\n\n\n}.bind(this);"
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 568,
+                        "y": 484.99999491373734
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 462.0005303744269,
+                        "y": 484.9999949137374
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 401.0002651872134,
+                        "y": 486.999994757237
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 344.0002651872134,
+                        "y": 488.99999460073656
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 279,
+                        "y": 486.999994757237
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 749.0482640728443,
+                        "y": 333.00000156500386
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "enemy"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.RedGhost"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "2",
+                        "density": 2.5,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": true,
+                        "groupIndex": 0,
+                        "shape": "circle"
+                      },
+                      {
+                        "is": "action.Eval",
+                        "script": "var b2Vec2 = Box2D.Common.Math.b2Vec2;\nvar jumped = false;\nvar jumpDelay = 0;\n\n// REPLACE ART\nvar AnimClass = Asset.resources[\"sprite.Dashy\"];\nvar fluttershy = new AnimClass();\nthis.actor.art.removeChild(this.actor.art.children[0]);\nthis.actor.art.addChild(fluttershy);\nvar artPiece = this.actor.art.children[0];\n\n\nthis.update = function(){\n\nvar player = Global.player;\nif(!player) return;\n\nvar vel = this.actor.body.GetLinearVelocity();\nvar vx=vel.x, vy=vel.y;\n\n\n\nartPiece.rotation = (artPiece.rotation+vy*5)/2;\n\n\nvar pos = this.actor.body.GetPosition();\nvar x = pos.x; var y = pos.y;\n\nvar pos2 = player.body.GetPosition();\n\n\nif(vx>5) vx=5;\nif(vx<-5) vx=-5;\n\nif(pos2.x<x-1){\n\t\tvx -= 1;\nthis.actor.art.scaleX = -1;\n}\n\nif(pos2.x>x+1){\n\t\tvx += 1;\nthis.actor.art.scaleX = 1;\n}\n\nthis.actor.body.SetLinearVelocity( new b2Vec2(vx,vy) );\n\n\nif(x<0){\nx=8;\nthis.actor.body.SetPosition( new b2Vec2(x,y) );\n}\nif(x>8){\nx=0;\nthis.actor.body.SetPosition( new b2Vec2(x,y) );\n}\n\nif(!jumped && ( pos2.y<y || y>3.2 ) ){\njumped = true;\njumpDelay = 10;\nvy -= 5;\nthis.actor.body.SetLinearVelocity( new b2Vec2(vx,vy) );\n}\nif(jumped && jumpDelay>0){\njumpDelay--;\nif(jumpDelay<=0){\njumped= false;\n}\n}\n\nvar dx = pos2.x-x;\nvar dy = pos2.y-y;\nvar dist = dx*dx+dy*dy;\nif(dist<0.6){\nvx -= dx*4;\nvy -= dy*4;\nthis.actor.body.SetLinearVelocity( new b2Vec2(vx,vy) );\n\nvar vel = player.body.GetLinearVelocity();\nvar vx=vel.x, vy=vel.y;\nvx += dx*4;\nvy += dy*4;\nplayer.body.SetLinearVelocity( new b2Vec2(vx,vy) );\n\n}\n\n}.bind(this);"
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 30,
+                        "y": 19
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 592,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 465,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 100,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 140,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 180,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 240,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 300,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 340,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 400,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 535,
+                        "y": 19
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 660,
+                        "y": 19
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 720,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 780,
+                        "y": 20
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 19,
+                        "y": 418.0000055557638
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 92.00375893924029,
+                        "y": 418.0000053992634
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 165.00950805481133,
+                        "y": 419.00000532101325
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 221.0072089174749,
+                        "y": 487.9999999217498
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 631.999469625573,
+                        "y": 418.00000524276305
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 706.0027419641789,
+                        "y": 418.00000516451286
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 780.006500903419,
+                        "y": 417.0000053210132
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": -41.00022266276281,
+                        "y": 18.00000015650039
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": -111.99821869789751,
+                        "y": 17.000000234750587
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 850.9979960351347,
+                        "y": 18.99999851324631
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              },
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 921.9915388150132,
+                        "y": 18.00000328650816
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "actor1"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.BrickBlock"
+                      },
+                      {
+                        "is": "box2d.Box",
+                        "type": "0",
+                        "density": 0,
+                        "friction": 0.5,
+                        "dampening": 0,
+                        "restitution": 0,
+                        "isSensor": false,
+                        "fixedRotation": false,
+                        "groupIndex": 0
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              }
+            ],
+            "actions": []
+          },
+          {
+            "actors": [
+              {
+                "actors": [],
+                "actions": [
+                  {
+                    "is": "edit.Animation"
+                  },
+                  {
+                    "is": "edit.Actions",
+                    "actions": [
+                      {
+                        "is": "art.SetTransform",
+                        "x": 411.0000007233796,
+                        "y": 224.000002817007
+                      },
+                      {
+                        "is": "meta.ID",
+                        "id": "camera"
+                      },
+                      {
+                        "is": "art.Bitmap",
+                        "image": "art.Camera"
+                      },
+                      {
+                        "is": "scene.Camera"
+                      },
+                      {
+                        "is": "action.Eval",
+                        "script": "var b2Vec2 = Box2D.Common.Math.b2Vec2;\n\nvar state = \"playing\";\nvar splatTimeLeft = 0;\nvar _winner = \"\";\n\nvar timeToReset = false;\n\nvar flutterScore = 0;\nvar dashyScore = 0;\n\nvar doSplat = function(winner){\n_winner = winner;\nstate = \"splat\";\nsplatTimeLeft = 30;\n\nvar player = Global.player;\nvar enemy = Global.enemy;\n\nplayer.body.SetActive(false);\nenemy.body.SetActive(false);\n\nif(_winner==\"fluttershy\"){\nflutterScore++;\n}else{\ndashyScore++;\n}\n\n};\nthis.update = function(){\n\nvar player = Global.player;\nvar enemy = Global.enemy;\n\nif(!enemy || !player) return;\n\nswitch(state){\ncase \"playing\":\n\nvar pos1 = player.body.GetPosition();\nvar pos2 = enemy.body.GetPosition();\n\nif(pos2.y>4){\ndoSplat(\"fluttershy\");\n}else if(pos1.y>4){\ndoSplat(\"rainbow dash\");\n}\n\nbreak;\n\n\n\n\ncase \"splat\":\nsplatTimeLeft--;\nthis.actor.art.rotation = 10/(30-splatTimeLeft);\nif(splatTimeLeft%2==0) this.actor.art.rotation*=-1;\nif(splatTimeLeft==0){\n\n\nif(flutterScore==10){\nPlaytime.showMessage(\"FLUTTERSHY WINS!\");\ntimeToReset = true;\n}else if(dashyScore==10){\nPlaytime.showMessage(\"RAINBOW DASH WINS!\");\ntimeToReset = true;\n}else{\nPlaytime.showMessage(\"Score: \"+flutterScore+\"-\"+dashyScore);\n}\n\nstate = \"afterMessage\";\n\n\n}\nbreak;\n\n\ncase \"afterMessage\":\nplayer.body.SetActive(true);\nenemy.body.SetActive(true);\nplayer.body.SetPosition( new b2Vec2(0.6,3.2) );\nenemy.body.SetPosition( new b2Vec2(7.3,3.2) );\nplayer.body.SetLinearVelocity( new b2Vec2(0,0) );\nenemy.body.SetLinearVelocity( new b2Vec2(0,0) );\nstate = \"playing\";\n\nif(timeToReset){\nflutterScore = 0; dashyScore = 0;\ntimeToReset = false;\n}\n\nbreak;\n\n}\n\n}.bind(this);"
+                      }
+                    ]
+                  },
+                  {
+                    "is": "edit.Selectable"
+                  }
+                ]
+              }
+            ],
+            "actions": []
+          }
+        ],
+        "actions": [
+          {
+            "is": "edit.Actions",
+            "actions": [
+              {
+                "is": "scene.Layers",
+                "layers": ["background","foreground","overlay"]
+              },
+              {
+                "is": "box2d.World",
+                "gravity": {
+                  "x": 0,
+                  "y": 10
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+
+
+  ]
+}
